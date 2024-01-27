@@ -29,3 +29,7 @@ Hint: Which composable aligns its children vertically?
 
 References
 TextAlign.Justify property
+
+# Screenshot of the App
+
+<img width="365" alt="Screenshot 2024-01-27 at 16 20 03" src="https://github.com/Hitendra27/ComposeArticle/assets/73651340/cc95f6fe-08c7-4013-980a-1620f9ceca4e">
