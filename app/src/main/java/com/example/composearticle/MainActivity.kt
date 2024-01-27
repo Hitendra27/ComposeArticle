@@ -12,6 +12,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -30,11 +31,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ArticleImage(
-                        title = stringResource(R.string.article_title),
-                        article1 = stringResource(R.string.article_1),
-                        article12 = stringResource(R.string.article_2)
-                    )
+                    ArticleApp()
                 }
             }
         }
@@ -42,13 +39,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ArticleText(
+fun ArticleApp() {
+    ArticleCard(
+        title = stringResource(R.string.article_title),
+        article1 = stringResource(R.string.article_1),
+        article12 = stringResource(R.string.article_2),
+        imaagePainter = painterResource(R.drawable.bg_compose_background)
+    )
+}
+
+@Composable
+fun ArticleCard(
     title: String,
     article1: String,
     article12: String,
+    imaagePainter: Painter,
     modifier: Modifier = Modifier
 ) {
-    Column {
+    Column(modifier = modifier) {
+        Image(painter = imaagePainter, contentDescription = null)
         Text(
             text = title,
             fontSize = 24.sp,
@@ -70,35 +79,10 @@ fun ArticleText(
     }
 }
 
-@Composable
-fun ArticleImage(
-    title: String,
-    article1: String,
-    article12: String,
-    modifier: Modifier = Modifier
-) {
-    val image = painterResource(R.drawable.bg_compose_background)
-
-    Column {
-        Image(
-            painter = image,
-            contentDescription = null
-        )
-        ArticleText(
-            title = title,
-            article1 = article1,
-            article12 = article12
-        )
-    }
-}
-
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     ComposeArticleTheme {
-        ArticleImage(
-            title = stringResource(R.string.article_title),
-            article1 = stringResource(R.string.article_1),
-            article12 = stringResource(R.string.article_2))
+       ArticleApp()
     }
 }
